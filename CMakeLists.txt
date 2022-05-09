@@ -68,7 +68,14 @@ install(
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
+install(
+    DIRECTORY launch
+    DESTINATION share/${PROJECT_NAME})
 
+install(
+    DIRECTORY cfg
+    DESTINATION share/${PROJECT_NAME})
+    
 ament_package()
 
 #endif()

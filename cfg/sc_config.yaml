@@ -1,0 +1,4 @@
+/**:
+    ros__parameters:
+        name:                                 "sc"          # prefix of TF frames
+       
