@@ -28,7 +28,7 @@ public:
 private:
   void handle_drone_pose(const nav_msgs::msg::Odometry & msg)
   {
-  /*
+  
     rclcpp::Time now = this->get_clock()->now();
     geometry_msgs::msg::TransformStamped t;
 
@@ -49,8 +49,8 @@ private:
 
     // Send the transformation
     tf_broadcaster_->sendTransform(t);
-    */
-    std::cout<<"Printing"<<std::endl;
+    
+    //std::cout<<"Printing"<<std::endl;
   }
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr subscription_;
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
