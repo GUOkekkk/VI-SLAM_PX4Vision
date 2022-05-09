@@ -17,7 +17,7 @@ public:
   FramePublisher()
   : Node("tf2_broadcaster_node")
   {
-    // Declare and acquire `dronename` parameter
+    // Declare and acquire `topic_name_` parameter
     this->declare_parameter<std::string>("topic_name_", "/Drone9/EKF/odom");
     this->get_parameter("topic_name_", topic_name_);
 
