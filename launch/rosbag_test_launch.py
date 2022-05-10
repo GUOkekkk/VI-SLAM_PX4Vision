@@ -40,7 +40,7 @@ def generate_launch_description():
              executable='static_transform_publisher',
              name='sc_cam_tf',
              arguments=['0', '0', '0',  '0', '0', '0', depth_frame, rgb_frame]),
-
+             
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
@@ -51,7 +51,7 @@ def generate_launch_description():
      	     name='sc_drone_cam_tf',
      	     arguments=['0', '0', '0',  '0', '0', '0', odom_frame, depth_frame])
                 
-        #TODO ADD ROBOT_FRAME -> CAMERA_FRAME TF
+        #TODO GET REAL PARAMS ROBOT_FRAME -> CAMERA_FRAME TF
         #TODO MODIFY CAMERA -> IMU TF
                 
 ])

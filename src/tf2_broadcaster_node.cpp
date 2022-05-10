@@ -39,7 +39,7 @@ private:
     // Read message content and assign it to
     // corresponding tf variables
     t.header.stamp = now;
-    t.header.frame_id = "world";
+    t.header.frame_id = "map";
     t.child_frame_id = "odom";
 
     t.transform.translation.x = msg.pose.pose.position.x;
