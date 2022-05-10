@@ -21,6 +21,7 @@ def generate_launch_description():
     imu_frame = [ns, TextSubstitution(text='_imu')]
     rgb_frame = [ns, TextSubstitution(text='_rgb')]
     depth_frame = [ns, TextSubstitution(text='_depth')]
+    odom_frame = 'odom'
 
     return LaunchDescription( [
         DeclareLaunchArgument('ns', default_value='sc'),
@@ -35,7 +36,6 @@ def generate_launch_description():
              	{'topic_name_': '/Drone9/EKF/odom'}
              ]      
         ),
-
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_cam_tf',
@@ -44,8 +44,12 @@ def generate_launch_description():
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
-             arguments=['0', '0', '0',  '0', '0', '0', depth_frame, imu_frame])
+             arguments=['0', '0', '0',  '0', '0', '0', depth_frame, imu_frame]),
                 # xyz roll pitch yaw
+        Node(package='tf2_ros',
+     	     executable='static_transform_publisher',
+     	     name='sc_drone_cam_tf',
+     	     arguments=['0', '0', '0',  '0', '0', '0', odom_frame, depth_frame])
                 
         #TODO ADD ROBOT_FRAME -> CAMERA_FRAME TF
         #TODO MODIFY CAMERA -> IMU TF
