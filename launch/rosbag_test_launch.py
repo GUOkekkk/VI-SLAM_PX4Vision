@@ -29,7 +29,11 @@ def generate_launch_description():
         #Publish map -> drone transform
         Node(package='tf2_broadcaster',
              executable='tf2_broadcaster',
-             name='tf2_broadcaster_node'        
+             name='tf2_broadcaster_node',
+             output='screen',
+             parameters=[
+             	{'topic_name_': '/Drone9/EKF/odom'}
+             ]      
         ),
 
         Node(package='tf2_ros',
@@ -44,5 +48,6 @@ def generate_launch_description():
                 # xyz roll pitch yaw
                 
         #TODO ADD ROBOT_FRAME -> CAMERA_FRAME TF
+        #TODO MODIFY CAMERA -> IMU TF
                 
 ])

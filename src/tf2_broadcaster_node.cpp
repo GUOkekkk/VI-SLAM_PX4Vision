@@ -4,7 +4,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_ros/transform_broadcaster.h>
-
+#include <turtlesim/msg/pose.hpp>
 
 #include <memory>
 #include <string>
@@ -22,21 +22,25 @@ public:
     this->get_parameter("topic_name_", topic_name_);
 
     // Initialize the transform broadcaster
-    subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(topic_name_,rclcpp::SensorDataQoS(), std::bind(&FramePublisher::handle_drone_pose, this, _1));
+    tf_broadcaster_ =
+      std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+
+    subscription_ = this->create_subscription<nav_msgs::msg::Odometry>(
+      topic_name_,rclcpp::SensorDataQoS(),
+      std::bind(&FramePublisher::handle_drone_pose, this, _1));
   }
 
 private:
   void handle_drone_pose(const nav_msgs::msg::Odometry & msg)
   {
-  
     rclcpp::Time now = this->get_clock()->now();
     geometry_msgs::msg::TransformStamped t;
 
     // Read message content and assign it to
     // corresponding tf variables
     t.header.stamp = now;
-    t.header.frame_id = "map";
-    t.child_frame_id = "EKF_odom";
+    t.header.frame_id = "world";
+    t.child_frame_id = "odom";
 
     t.transform.translation.x = msg.pose.pose.position.x;
     t.transform.translation.y = msg.pose.pose.position.y;
@@ -49,8 +53,6 @@ private:
 
     // Send the transformation
     tf_broadcaster_->sendTransform(t);
-    
-    //std::cout<<"Printing"<<std::endl;
   }
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr subscription_;
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
@@ -64,3 +66,4 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   return 0;
 }
+
