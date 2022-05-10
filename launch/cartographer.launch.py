@@ -27,11 +27,9 @@ from launch.substitutions import ThisLaunchFileDir
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    rpi_robot_prefix = get_package_share_directory('tf2_broadcaster')
-    cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(
-                                                  rpi_robot_prefix, 'config'))
-    configuration_basename = LaunchConfiguration('configuration_basename',
-                                                 default='rpi_robot_lds_2d.lua')
+    pkg_prefix = get_package_share_directory('tf2_broadcaster')
+    cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(pkg_prefix, 'cfg'))
+    configuration_basename = LaunchConfiguration('configuration_basename', default='test_3d.lua')
 
     resolution = LaunchConfiguration('resolution', default='0.05')
     publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
