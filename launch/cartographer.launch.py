@@ -54,8 +54,9 @@ def generate_launch_description():
             output='screen',
             remappings=[
             	('/points2','/sc/depth/points'),
-            	('/imu','/sc/imu'),
-            	('/odom','/Drone9/EKF/odom')
+            	('/odom','/Drone9/EKF/odom'),
+            	('/imu','/sc/imu')
+            	
             ],
             parameters=[{'use_sim_time': use_sim_time}],
             arguments=['-configuration_directory', cartographer_config_dir,
