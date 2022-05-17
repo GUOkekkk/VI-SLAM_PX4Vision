@@ -29,7 +29,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     pkg_prefix = get_package_share_directory('tf2_broadcaster')
     cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(pkg_prefix, 'cfg'))
-    configuration_basename = LaunchConfiguration('configuration_basename', default='test_3d.lua')
+    configuration_basename = LaunchConfiguration('configuration_basename', default='test.lua')
 
     resolution = LaunchConfiguration('resolution', default='0.05')
     publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
@@ -52,6 +52,10 @@ def generate_launch_description():
             executable='cartographer_node',
             name='cartographer_node',
             output='screen',
+            remappings=[
+            	('/points2','/sc/depth/points'),
+            	('/imu','/sc/imu')
+            ],
             parameters=[{'use_sim_time': use_sim_time}],
             arguments=['-configuration_directory', cartographer_config_dir,
                        '-configuration_basename', configuration_basename]),

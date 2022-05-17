@@ -44,7 +44,7 @@ def generate_launch_description():
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
-             arguments=['0', '0', '0',  '0', '0', '0', depth_frame, imu_frame]),
+             arguments=['0', '0', '0',  '0', '0', '0', odom_frame, imu_frame]),
                 # xyz roll pitch yaw
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
