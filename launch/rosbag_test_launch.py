@@ -34,7 +34,7 @@ def generate_launch_description():
              name='tf2_broadcaster_node',
              output='screen',
              parameters=[
-             	{'topic_name_': '/Drone9/EKF/odom'}
+             	{'topic_name_': '/odom'}
              ]      
         ),
         Node(package='tf2_ros',
