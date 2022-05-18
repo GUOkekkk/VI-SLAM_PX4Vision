@@ -21,8 +21,8 @@ def generate_launch_description():
     imu_frame = [ns, TextSubstitution(text='_imu')]
     rgb_frame = [ns, TextSubstitution(text='_rgb')]
     depth_frame = [ns, TextSubstitution(text='_depth')]
-    odom_frame = [ns, TextSubstitution(text='_odom')]
-    drone_frame = [ns, TextSubstitution(text='_base_link')]
+    odom_frame = 'odom'
+    drone_frame = 'base_link'
 
     return LaunchDescription( [
         DeclareLaunchArgument('ns', default_value='sc'),
@@ -45,7 +45,7 @@ def generate_launch_description():
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
-             arguments=['0', '0', '0',  '0', '0', '0', drone_frame, imu_frame]),
+             arguments=['0', '0', '0',  '-1.57', '0', '1.57', drone_frame, imu_frame]),
                 # xyz yaw pitch roll
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
