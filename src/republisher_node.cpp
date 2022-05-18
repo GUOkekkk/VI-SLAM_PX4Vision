@@ -25,8 +25,8 @@ class Republisher : public rclcpp::Node
     {
     	nav_msgs::msg::Odometry republished;
 	republished = msg;
-	republished.header.frame_id = "odom";
-	republished.child_frame_id = "base_link";
+	republished.header.frame_id = "sc_odom";
+	republished.child_frame_id = "sc_base_link";
 	// Republish the odometry, now with frame_id s
 	publisher_->publish(republished);	
     }
