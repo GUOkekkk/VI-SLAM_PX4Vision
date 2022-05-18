@@ -39,8 +39,8 @@ private:
     // Read message content and assign it to
     // corresponding tf variables
     t.header.stamp = now;
-    t.header.frame_id = "map";
-    t.child_frame_id = "odom";
+    t.header.frame_id = "odom";
+    t.child_frame_id = "base_link";
 
     t.transform.translation.x = msg.pose.pose.position.x;
     t.transform.translation.y = msg.pose.pose.position.y;

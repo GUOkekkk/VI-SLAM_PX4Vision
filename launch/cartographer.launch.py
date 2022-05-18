@@ -54,7 +54,7 @@ def generate_launch_description():
             output='screen',
             remappings=[
             	('/points2','/sc/depth/points'),
-            	('/odom','/Drone9/EKF/odom'),
+            	#('/odom','/Drone9/EKF/odom'),
             	('/imu','/sc/imu')
             	
             ],

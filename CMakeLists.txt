@@ -55,6 +55,13 @@ target_link_libraries(tf2_broadcaster ${LINK_LIBRARIES})
   tf2_geometry_msgs
   nav_msgs
 )
+add_executable(republisher src/republisher_node.cpp)
+target_link_libraries(republisher ${LINK_LIBRARIES})
+ ament_target_dependencies(republisher
+  rclcpp
+  std_msgs
+  nav_msgs
+)
 
 #############
 ## Install ##
@@ -62,7 +69,7 @@ target_link_libraries(tf2_broadcaster ${LINK_LIBRARIES})
 
 
 install(
-  TARGETS tf2_broadcaster
+  TARGETS tf2_broadcaster republisher
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}

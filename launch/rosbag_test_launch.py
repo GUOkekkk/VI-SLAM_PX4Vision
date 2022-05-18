@@ -49,7 +49,16 @@ def generate_launch_description():
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
      	     name='sc_drone_cam_tf',
-     	     arguments=['0', '0', '0',  '0', '0', '0', odom_frame, depth_frame])
+     	     arguments=['0', '0', '0',  '0', '0', '0', odom_frame, depth_frame]),
+     	
+     	Node(package='tf2_broadcaster',
+     	     executable='republisher',
+     	     name='republisher_odom_node',
+     	     output='screen',
+     	     parameters=[
+             	{'topic_name_': '/Drone9/EKF/odom'}
+             ]
+        ) 
                 
         #TODO GET REAL PARAMS ROBOT_FRAME -> CAMERA_FRAME TF
         #TODO MODIFY CAMERA -> IMU TF
