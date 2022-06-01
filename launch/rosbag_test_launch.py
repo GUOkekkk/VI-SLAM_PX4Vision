@@ -34,34 +34,50 @@ def generate_launch_description():
              name='tf2_broadcaster_node',
              output='screen',
              parameters=[
-             	{'topic_name_': '/odom'}
+             	{'topic_name_': '/Drone9/EKF/odom'},
+             	{'use_sim_time': True}
              ]      
         ),
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_cam_tf',
-             arguments=['0', '0', '0',  '0', '0', '0', depth_frame, rgb_frame]),
+             arguments=['0', '0', '0',  '0', '0', '0', depth_frame, rgb_frame],
+             parameters=[{'use_sim_time': True}]
+        ),
              
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
-             arguments=['0', '0', '0',  '-1.57', '0', '1.57', drone_frame, imu_frame]),
+             arguments=['0', '0', '0',  '-1.57', '0', '1.57', depth_frame, imu_frame],
+             parameters=[{'use_sim_time': True}]
+            ),
+
                 # xyz yaw pitch roll
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
      	     name='sc_drone_cam_tf',
-     	     arguments=['0', '0', '0',  '0', '0', '0', drone_frame, depth_frame]),
-     	
-     	Node(package='tf2_broadcaster',
-     	     executable='republisher',
-     	     name='republisher_odom_node',
-     	     output='screen',
-     	     parameters=[
-             	{'topic_name_': '/Drone9/EKF/odom'}
-             ]
-        ) 
-                
-        #TODO GET REAL PARAMS ROBOT_FRAME -> CAMERA_FRAME TF
-        #TODO MODIFY CAMERA -> IMU TF
+     	     arguments=['0', '0', '0',  '0', '0', '-1.57', drone_frame, depth_frame],
+	     parameters=[{'use_sim_time': True}]
+     	     ),
+     	 
+     	#KEEP THIS ONLY FOR WORKING WITH OLD BAGFILES
+     	Node(package='tf2_ros',
+     	     executable='static_transform_publisher',
+     	     name='sc_depth_tf',
+     	     arguments=['0', '0', '0',  '0', '0', '0', depth_frame, 'sc_depth_frame'],
+             parameters=[{'use_sim_time': True}]
+     	     
+     	     )
+     	   
+     	#Node(package='tf2_broadcaster',
+     	#     executable='republisher',
+     	#     name='republisher_odom_node',
+     	#     output='screen',
+     	#     parameters=[
+        #     	{'topic_name_': '/Drone9/EKF/odom'}
+        #     ]
+        #) 
+        
+        #TODO TRANSLATIONS OF STATIC TRANSFORMS BASE_LINK -> CAMERA
                 
 ])
