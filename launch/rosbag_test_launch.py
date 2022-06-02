@@ -29,15 +29,15 @@ def generate_launch_description():
         DeclareLaunchArgument('config', default_value='sc'),
         
         #Publish map -> drone transform
-        Node(package='tf2_broadcaster',
-             executable='tf2_broadcaster',
-             name='tf2_broadcaster_node',
-             output='screen',
-             parameters=[
-             	{'topic_name_': '/Drone9/EKF/odom'},
-             	{'use_sim_time': True}
-             ]      
-        ),
+        #Node(package='tf2_broadcaster',
+        #     executable='tf2_broadcaster',
+        #     name='tf2_broadcaster_node',
+        #     output='screen',
+        #     parameters=[
+        #     	{'topic_name_': '/Drone9/EKF/odom'},
+        #     	{'use_sim_time': True}
+        #     ]      
+        #),
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_cam_tf',
@@ -48,7 +48,7 @@ def generate_launch_description():
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_imu_tf',             
-             arguments=['0', '0', '0',  '-1.57', '0', '1.57', depth_frame, imu_frame],
+             arguments=['0', '0', '0',  '0', '-1.57', '0', depth_frame, imu_frame],
              parameters=[{'use_sim_time': True}]
             ),
 
@@ -56,7 +56,7 @@ def generate_launch_description():
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
      	     name='sc_drone_cam_tf',
-     	     arguments=['0', '0', '0',  '0', '0', '-1.57', drone_frame, depth_frame],
+     	     arguments=['0', '0', '0',  '0', '0', '0', drone_frame, depth_frame],
 	     parameters=[{'use_sim_time': True}]
      	     ),
      	 
