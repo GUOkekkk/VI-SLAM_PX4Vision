@@ -29,15 +29,15 @@ def generate_launch_description():
         DeclareLaunchArgument('config', default_value='sc'),
         
         #Publish map -> drone transform
-        #Node(package='tf2_broadcaster',
-        #     executable='tf2_broadcaster',
-        #     name='tf2_broadcaster_node',
-        #     output='screen',
-        #     parameters=[
-        #     	{'topic_name_': '/Drone9/EKF/odom'},
-        #     	{'use_sim_time': True}
-        #     ]      
-        #),
+        Node(package='tf2_broadcaster',
+             executable='tf2_broadcaster',
+             name='tf2_broadcaster_node',
+             output='screen',
+             parameters=[
+             	{'topic_name_': '/Drone9/EKF/odom'},
+             	{'use_sim_time': True}
+             ]      
+        ),
         Node(package='tf2_ros',
              executable='static_transform_publisher',
              name='sc_cam_tf',
