@@ -22,7 +22,7 @@ options = {
   tracking_frame = "sc_imu",
   published_frame = "odom", --"base_link if use_odometry = false, odom if use_odometry = true"
   odom_frame = "odom",
-  provide_odom_frame = false,
+  provide_odom_frame = false, --WORKS USING FALSE
   publish_frame_projected_to_2d = false,
   use_odometry = true,
   use_nav_sat = false,

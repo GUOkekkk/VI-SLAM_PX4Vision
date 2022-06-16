@@ -56,7 +56,7 @@ def generate_launch_description():
         Node(package='tf2_ros',
      	     executable='static_transform_publisher',
      	     name='sc_drone_cam_tf',
-     	     arguments=['0', '0', '0',  '0', '0', '0', drone_frame, depth_frame],
+     	     arguments=['0.088', '0', '0',  '0', '0', '0', drone_frame, depth_frame],
 	     parameters=[{'use_sim_time': True}]
      	     ),
      	 
@@ -76,8 +76,6 @@ def generate_launch_description():
      	#     parameters=[
         #     	{'topic_name_': '/Drone9/EKF/odom'}
         #     ]
-        #) 
-        
-        #TODO TRANSLATIONS OF STATIC TRANSFORMS BASE_LINK -> CAMERA
+        #)
                 
 ])
