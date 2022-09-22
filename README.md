@@ -1,3 +1,14 @@
+# Abstract
+The aim of this project is to perform visual simultaneous localization and
+mapping with an UAV (Unmanned Aerial Vehicle). The drone used for this
+project is a PX4 Vision equipped with a Structure Core sensor. ROS2 is used,
+along several packages available: (1) the Cartographer package for mapping
+and localisation, (2) the ls2n_drone_ros2 packages to control drone motions.
+The first step of the project was to get an understanding of the packages.
+Then, to use the sensor SDK combined with Cartographer to perform SLAM.
+And, finally, using the obtained 3D map to track some trajectories with the
+UAV. The experiments were performed in the LS2N drone arena
+
 # Package installation
 
 Compile in a ROS2 Workspace.
