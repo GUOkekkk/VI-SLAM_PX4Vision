@@ -7,7 +7,7 @@ and localisation, (2) the ls2n_drone_ros2 packages to control drone motions.
 The first step of the project was to get an understanding of the packages.
 Then, to use the sensor SDK combined with Cartographer to perform SLAM.
 And, finally, using the obtained 3D map to track some trajectories with the
-UAV. The experiments were performed in the LS2N drone arena
+UAV. The experiments were performed in the LS2N drone arena. The project report and result video could be found in this repository.
 
 # Package installation
 
