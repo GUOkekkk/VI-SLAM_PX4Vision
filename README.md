@@ -9,7 +9,8 @@ Then, to use the sensor SDK combined with Cartographer to perform SLAM.
 And, finally, using the obtained 3D map to track some trajectories with the
 UAV. The experiments were performed in the LS2N drone arena. The project report and result video could be found in this repository.
 
-The result is shown as below:
+
+By using the built-in imu of the drone and the external motion capture device and the RGB-D camera of the drone, the final 3D point cloud map of the laboratory is obtained as shown in the figure below:
 ![result](https://github.com/GUOkekkk/VSLAM_PX4Vision/blob/main/Result.png)
 
 # Package installation
