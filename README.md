@@ -1,5 +1,5 @@
 # Abstract
-The aim of this project is to perform visual simultaneous localization and
+The aim of this project is to perform visual inertial simultaneous localization and
 mapping with an UAV (Unmanned Aerial Vehicle). The drone used for this
 project is a PX4 Vision equipped with a Structure Core sensor. ROS2 is used,
 along several packages available: (1) the Cartographer package for mapping
